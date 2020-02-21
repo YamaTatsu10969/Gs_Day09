@@ -16,8 +16,15 @@ class Task: Codable {
     var title: String = ""
     var memo: String = ""
     var imageName: String?
+    var category: Category?
     var createdAt: Timestamp
     var updatedAt: Timestamp
+
+
+    enum Category: String, Codable {
+        case `private`
+        case work
+    }
     
     // init とは、Task を作るときに呼ばれるメソッド。(イニシャライザという)
     // 使い方： let task = Task(title: "プログラミング")

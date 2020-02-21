@@ -89,9 +89,21 @@ class TaskCollection {
         tasks = sortTaskByUpdatedAt(tasks: tasks)
         delegate?.saved()
     }
-    
+
     private func load() {
         taskUseCase.fetchTaskDocuments { (fetchTasks) in
+            guard let fetchTasks = fetchTasks else {
+                self.save()
+                return
+            }
+            self.tasks = self.sortTaskByUpdatedAt(tasks: fetchTasks)
+            self.delegate?.loaded()
+        }
+    }
+
+    #warning("3. クエリをつける")
+    func loadWithQuery(queryValue: String) {
+        taskUseCase.fetchTaskDocumentsWithQuery("category", queryValue) { (fetchTasks) in
             guard let fetchTasks = fetchTasks else {
                 self.save()
                 return

@@ -35,9 +35,10 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     
     fileprivate func setupNavigationBar() {
         let rightButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddScreen))
-        navigationItem.rightBarButtonItem = rightButtonItem
+        #warning("4. ソートする用のボタンを作成")
+        let sortButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(tapSortButton))
+        navigationItem.rightBarButtonItems = [rightButtonItem, sortButtonItem]
         
-        #warning("leftButton を作成して、 logout を実行する")
         let leftButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logout))
         navigationItem.leftBarButtonItem = leftButtonItem
     }
@@ -88,6 +89,27 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
     // スワイプした時の処理
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         TaskCollection.shared.removeTask(index: indexPath.row)
+    }
+
+    #warning("5. ソートボタンのメソッドを作成")
+    @objc private func tapSortButton(_ sender: Any) {
+        // アクションシートを表示する
+        let alertSheet = UIAlertController(title: nil, message: "選択してください", preferredStyle: .actionSheet)
+        let englishAction = UIAlertAction(title: "private", style: .default) { action in
+            print("englishが選択されました")
+            TaskCollection.shared.loadWithQuery(queryValue: Task.Category.private.rawValue)
+
+        }
+        let workAction = UIAlertAction(title: "work", style: .default) { action in
+            print("workが選択されました")
+                        TaskCollection.shared.loadWithQuery(queryValue: Task.Category.work.rawValue)
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+        alertSheet.addAction(englishAction)
+        alertSheet.addAction(workAction)
+        alertSheet.addAction(cancelAction)
+
+        present(alertSheet, animated: true)
     }
     
 }

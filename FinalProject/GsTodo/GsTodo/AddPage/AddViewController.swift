@@ -17,6 +17,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var categoryTextField: UITextField!
 
     // 判定に使用するプロパティ
     var selectIndex: Int?
@@ -26,16 +27,23 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         setupMemoTextView()
         setupNavigationBar()
+
+
         
         // Editかどうかの判定
         if let index = selectIndex {
             title = "編集"
-            titleTextField.text = TaskCollection.shared.getTask(at: index).title
-            memoTextView.text = TaskCollection.shared.getTask(at: index).memo
-            if let imageName = TaskCollection.shared.getTask(at: index).imageName,
+            let selectTask = TaskCollection.shared.getTask(at: index)
+            titleTextField.text = selectTask.title
+            memoTextView.text = selectTask.memo
+            categoryTextField.text = selectTask.category.map { $0.rawValue }
+            if let imageName = selectTask.imageName,
                 let ref = TaskCollection.shared.getImageRef(imageName: imageName) {
                 imageView.sd_setImage(with: ref)
             }
+            #warning("7. デフォルトカテゴリ追加")
+        }else {
+            categoryTextField.text = Task.Category.private.rawValue
         }
     }
     
@@ -68,6 +76,8 @@ class AddViewController: UIViewController {
         }
         tmpTask.title = title
         tmpTask.memo = memoTextView.text
+        #warning("9. category の追加")
+        tmpTask.category = categoryTextField.text.map { (Task.Category(rawValue: $0) ?? .work) }
         if isSetImage {
             print("🌞1. TaskCollection.shared.saveImage")
             TaskCollection.shared.saveImage(image: imageView.image) { (imageName) in

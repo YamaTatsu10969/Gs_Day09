@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddViewController" customModule="GsTodo" customModuleProvider="target">
             <connections>
+                <outlet property="categoryTextField" destination="daY-fM-iwz" id="b3P-A4-6L2"/>
                 <outlet property="imageView" destination="bZ3-b8-Dhc" id="4VH-sL-o39"/>
                 <outlet property="memoTextView" destination="07V-Hn-V2P" id="q9m-Nd-YRK"/>
                 <outlet property="titleTextField" destination="6qH-iw-Oa1" id="mNB-5d-ZsG"/>
@@ -69,6 +70,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z8-3O-0eh">
+                    <rect key="frame" x="20" y="509" width="70" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZ3-b8-Dhc">
                     <rect key="frame" x="20" y="333" width="374" height="160"/>
                     <gestureRecognizers/>
@@ -79,6 +86,11 @@
                         <outletCollection property="gestureRecognizers" destination="PIa-m5-fx7" appends="YES" id="3TN-6y-gP7"/>
                     </connections>
                 </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="daY-fM-iwz">
+                    <rect key="frame" x="20" y="538" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -90,15 +102,20 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bZ3-b8-Dhc" secondAttribute="trailing" constant="20" id="BBF-pK-heQ"/>
                 <constraint firstItem="7S2-ZD-N7Z" firstAttribute="top" secondItem="6qH-iw-Oa1" secondAttribute="bottom" constant="16" id="K10-W2-5vc"/>
                 <constraint firstItem="xJH-i8-MWd" firstAttribute="top" secondItem="07V-Hn-V2P" secondAttribute="bottom" constant="16" id="RFk-ID-wIc"/>
+                <constraint firstItem="8z8-3O-0eh" firstAttribute="top" secondItem="bZ3-b8-Dhc" secondAttribute="bottom" constant="16" id="Rpe-Gw-yl2"/>
                 <constraint firstItem="xJH-i8-MWd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="T8j-uB-ZfH"/>
+                <constraint firstItem="daY-fM-iwz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Zir-0k-WJN"/>
                 <constraint firstItem="07V-Hn-V2P" firstAttribute="top" secondItem="7S2-ZD-N7Z" secondAttribute="bottom" constant="8" id="b4x-bK-dUp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bR0-fF-umo" secondAttribute="trailing" constant="16" id="cnb-hl-ebF"/>
+                <constraint firstItem="daY-fM-iwz" firstAttribute="top" secondItem="8z8-3O-0eh" secondAttribute="bottom" constant="8" id="czi-QJ-PyU"/>
                 <constraint firstItem="bR0-fF-umo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="e72-GS-hti"/>
                 <constraint firstItem="7S2-ZD-N7Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="eaE-Ow-k5t"/>
                 <constraint firstItem="bZ3-b8-Dhc" firstAttribute="top" secondItem="xJH-i8-MWd" secondAttribute="bottom" constant="8" id="enL-La-FPC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="daY-fM-iwz" secondAttribute="trailing" constant="20" id="fz4-sg-Ruz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6qH-iw-Oa1" secondAttribute="trailing" constant="16" id="h0Q-2I-Pso"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7S2-ZD-N7Z" secondAttribute="trailing" constant="16" id="mSn-yu-Bqv"/>
                 <constraint firstItem="bZ3-b8-Dhc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="odr-Mw-oaR"/>
+                <constraint firstItem="8z8-3O-0eh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="w48-wv-45k"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="152" y="183"/>
